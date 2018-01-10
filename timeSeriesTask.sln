@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "..\Test\Test.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parser", "Parser\Parser.csproj", "{5AD0817B-995F-418A-BEF2-83030534DDA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Engine\Calculator.csproj", "{94CAEE31-5E0A-4A53-AE86-7B476C3B2017}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5AD0817B-995F-418A-BEF2-83030534DDA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AD0817B-995F-418A-BEF2-83030534DDA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AD0817B-995F-418A-BEF2-83030534DDA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94CAEE31-5E0A-4A53-AE86-7B476C3B2017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94CAEE31-5E0A-4A53-AE86-7B476C3B2017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94CAEE31-5E0A-4A53-AE86-7B476C3B2017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94CAEE31-5E0A-4A53-AE86-7B476C3B2017}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -85,6 +85,30 @@ namespace Test
             Assert.AreEqual(Math.Sqrt((n * (n + 1)) / 12d), arrayStandardDeviation);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void HistogramInconsistentRange()
+        {
+            var histogram = new Histogram(10, 0, 3);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void HistogramNonPositiveNumberOfBins()
+        {
+            var histogram = new Histogram(0, 1, -1);
+        }
+        
+        [TestMethod]
+        public void HistogramOddNumbers()
+        {
+            int n = 5;
+            double[] oddNumbers = Enumerable.Range(1, n).Select(x => (double)1 + 2 * (x - 1)).ToArray();
+            var histogram = new Histogram(0d, 2d * n, n);
+            int[] frequencies = histogram.ComputeFrequenciesOf(oddNumbers);
+            CollectionAssert.AreEqual(new int[n].Select(x => 1).ToArray(), frequencies);
+        }
+
         private ICalculator workerGetCalculator(CalculatorType calculatorType)
         {
             return CalculatorFactory.GetCalculator(calculatorType);

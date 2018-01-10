@@ -9,6 +9,27 @@ namespace Test
     public class TestCalculator
     {
         [TestMethod]
+        public void CalculatorFactoryMean()
+        {
+            var calculator = CalculatorFactory.GetCalculator(CalculatorType.Mean);
+            Assert.IsInstanceOfType(calculator, typeof(MeanCalculator));
+        }
+
+        [TestMethod]
+        public void CalculatorFactoryStandardDeviation()
+        {
+            var calculator = CalculatorFactory.GetCalculator(CalculatorType.StandardDeviation);
+            Assert.IsInstanceOfType(calculator, typeof(StandardDeviationCalculator));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void CalculatorFactoryNull()
+        {
+            var calculator = CalculatorFactory.GetCalculator(CalculatorType.Null);
+        }
+
+        [TestMethod]
         public void MeanOfConstantArray()
         {
             double constant = 1d;
@@ -34,6 +55,39 @@ namespace Test
             double[] squaresArray = Enumerable.Range(1, n).Select(x => (double)(x * x)).ToArray();
             double arrayMean = workerTestCalculator(CalculatorType.Mean, squaresArray);
             Assert.AreEqual((n + 1) * (2 * n + 1) / 6d, arrayMean);
+        }
+
+        [TestMethod]
+        public void StandardDeviationOfConstantArray()
+        {
+            double constant = 1d;
+            int n = 10;
+            double[] constantArray = new double[n].Select(x => constant).ToArray();
+            double arrayStandardDeviation = workerTestCalculator(CalculatorType.StandardDeviation, constantArray);
+            Assert.AreEqual(0, arrayStandardDeviation);
+        }
+
+        [TestMethod]
+        public void StandardDeviationOfSingleValue()
+        {
+            double constant = 1d;
+            double[] singleValue = new double[] { constant };
+            double arrayStandardDeviation = workerTestCalculator(CalculatorType.StandardDeviation, singleValue);
+            Assert.AreEqual(0, arrayStandardDeviation);
+        }
+
+        [TestMethod]
+        public void StandardDeviationOfLinearValue()
+        {
+            int n = 11;
+            double[] linearArray = Enumerable.Range(1, n).Select(x => (double)x).ToArray();
+            double arrayStandardDeviation = workerTestCalculator(CalculatorType.StandardDeviation, linearArray);
+            Assert.AreEqual(Math.Sqrt((n * (n + 1)) / 12d), arrayStandardDeviation);
+        }
+
+        private ICalculator workerGetCalculator(CalculatorType calculatorType)
+        {
+            return CalculatorFactory.GetCalculator(calculatorType);
         }
 
         private double workerTestCalculator(CalculatorType calculatorType, double[] array)

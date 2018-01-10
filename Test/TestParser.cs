@@ -16,6 +16,7 @@ namespace Test
             double[] parsedDataSeries = parser.ParseDataSeries(dataPath);
             CollectionAssert.AreEqual(parsedDataSeries, Enumerable.Range(0, 6).Select(x => (double)x).ToArray());
         }
+
         [TestMethod]
         public void CSVParserTwoLines()
         {
@@ -24,6 +25,5 @@ namespace Test
             double[] parsedDataSeries = parser.ParseDataSeries(dataPath);
             CollectionAssert.AreEqual(parsedDataSeries, Enumerable.Range(0, 11).Select(x => (double)x).ToArray());
         }
-
     }
 }

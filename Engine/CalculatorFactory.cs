@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +22,7 @@ namespace Calculator
                 case CalculatorType.Mean:
                     return new MeanCalculator();
                 case CalculatorType.StandardDeviation:
-                    throw new NotImplementedException();
+                    return new StandardDeviationCalculator();
                 default:
                     throw new ArgumentException();
             }

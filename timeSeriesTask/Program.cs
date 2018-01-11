@@ -1,11 +1,6 @@
 ﻿using Calculator;
 using Parser;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace timeSeriesTask
 {
@@ -17,7 +12,7 @@ namespace timeSeriesTask
 
             double[] data = CSVParser.CSVParserInstance.ParseDataSeries(dataPath);
 
-            double arithmeticMean = CalculatorFactory.GetCalculator(CalculatorType.Mean).Compute(data);
+            double arithmeticMean = CalculatorFactory.GetCalculator(CalculatorType.ArithmeticMean).Compute(data);
 
             Console.WriteLine("Hi!");
             Console.WriteLine("\n" +

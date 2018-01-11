@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calculator
 {
     public class StandardDeviationCalculator : ICalculator
     {
-        private ICalculator meanCalculator { get; }
+        private ICalculator arithmeticMeanCalculator { get; }
 
         internal StandardDeviationCalculator()
         {
-            meanCalculator = CalculatorFactory.GetCalculator(CalculatorType.Mean);
+            arithmeticMeanCalculator = CalculatorFactory.GetCalculator(CalculatorType.ArithmeticMean);
         }
 
         public double Compute(IEnumerable<double> values)
         {
-            double mean = meanCalculator.Compute(values);
+            double mean = arithmeticMeanCalculator.Compute(values);
 
             double sumOfSquaredDifferences = 0;
             int counter = 0;

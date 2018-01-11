@@ -11,7 +11,7 @@ namespace Test
         [TestMethod]
         public void CalculatorFactoryMean()
         {
-            var calculator = CalculatorFactory.GetCalculator(CalculatorType.Mean);
+            var calculator = CalculatorFactory.GetCalculator(CalculatorType.ArithmeticMean);
             Assert.IsInstanceOfType(calculator, typeof(ArithmeticMeanCalculator));
         }
 
@@ -35,7 +35,7 @@ namespace Test
             double constant = 1d;
             int n = 10;
             double[] constantArray = new double[n].Select(x => constant).ToArray();
-            double arrayMean = workerTestCalculator(CalculatorType.Mean, constantArray);
+            double arrayMean = workerTestCalculator(CalculatorType.ArithmeticMean, constantArray);
             Assert.AreEqual(constant, arrayMean);
         }
 
@@ -44,7 +44,7 @@ namespace Test
         {
             int n = 10;
             double[] linearArray = Enumerable.Range(1, n).Select(x => (double)x).ToArray();
-            double arrayMean = workerTestCalculator(CalculatorType.Mean, linearArray);
+            double arrayMean = workerTestCalculator(CalculatorType.ArithmeticMean, linearArray);
             Assert.AreEqual((1 + n) / 2d, arrayMean);
         }
 
@@ -53,7 +53,7 @@ namespace Test
         {
             int n = 10;
             double[] squaresArray = Enumerable.Range(1, n).Select(x => (double)(x * x)).ToArray();
-            double arrayMean = workerTestCalculator(CalculatorType.Mean, squaresArray);
+            double arrayMean = workerTestCalculator(CalculatorType.ArithmeticMean, squaresArray);
             Assert.AreEqual((n + 1) * (2 * n + 1) / 6d, arrayMean);
         }
 

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calculator
 {
     public enum CalculatorType
     {
         Null,
-        Mean,
+        ArithmeticMean,
         StandardDeviation
     }
 
@@ -19,7 +15,7 @@ namespace Calculator
         {
             switch (calculatorType)
             {
-                case CalculatorType.Mean:
+                case CalculatorType.ArithmeticMean:
                     return new ArithmeticMeanCalculator();
                 case CalculatorType.StandardDeviation:
                     return new StandardDeviationCalculator();

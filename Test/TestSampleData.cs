@@ -16,7 +16,7 @@ namespace UnitTestProject1
 
             double[] data = CSVParser.CSVParserInstance.ParseDataSeries(dataPath);
 
-            double arithmeticMean = CalculatorFactory.GetCalculator(CalculatorType.Mean).Compute(data);
+            double arithmeticMean = CalculatorFactory.GetCalculator(CalculatorType.ArithmeticMean).Compute(data);
             
             double standardDeviation = CalculatorFactory.GetCalculator(CalculatorType.StandardDeviation).Compute(data);
             

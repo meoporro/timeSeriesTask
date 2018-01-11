@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Calculator
+namespace Engine
 {
     public class StandardDeviationCalculator : ICalculator
     {
@@ -24,6 +24,7 @@ namespace Calculator
                 counter++;
             }
 
+            // Case counter == 1 is dealt with separately.
             return counter > 1 ? Math.Sqrt(sumOfSquaredDifferences / (counter - 1)) : 0d;
         }
     }

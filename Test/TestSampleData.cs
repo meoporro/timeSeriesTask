@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Linq;
-using Calculator;
+using Engine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Parser;
 
-namespace UnitTestProject1
+namespace Test
 {
     [TestClass]
     public class TestSampleData
     {
+        // Test implementation against built-in implementation.
         [TestMethod]
         public void SampleData()
         {
-            string dataPath = "../../../data/SampleData.csv";
+            string dataPath = "$(ProjectDir)/../../../../data/SampleData.csv";
 
             double[] data = CSVParser.CSVParserInstance.ParseDataSeries(dataPath);
 

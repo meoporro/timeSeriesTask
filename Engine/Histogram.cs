@@ -2,42 +2,56 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Calculator
+namespace Engine
 {
     public class Histogram
     {
-        public double[] binBoundaries { get; }
+        /// <summary>
+        /// Boundaries of the histogram bins.
+        /// Assumption: bin[i] = [binBoundaries[i], binBoundaries[i + 1])
+        /// with exception for the last one bin[nBins - 1] = [binBoundaries[nBins - 1], binBoundaries[nBins]]
+        /// </summary>
+        public double[] BinBoundaries { get; }
 
+        /// <summary>
+        /// Construct an histogram with nBins evenly spaced bins in the range [minRange, maxRange]
+        /// </summary>
+        /// <param name="minRange"></param>
+        /// <param name="maxRange"></param>
+        /// <param name="nBins"></param>
         public Histogram(double minRange, double maxRange, int nBins)
         {
             if (minRange >= maxRange || nBins < 1) throw new ArgumentException(); 
 
-            binBoundaries = new double[nBins + 1];
+            BinBoundaries = new double[nBins + 1];
             double step = (maxRange - minRange) / nBins;
-            binBoundaries[0] = minRange;
+            BinBoundaries[0] = minRange;
             for (int i = 1; i < nBins; i++)
             {
-                binBoundaries[i] = minRange + i * step;
+                BinBoundaries[i] = minRange + i * step;
             }
-            binBoundaries[nBins] = maxRange;
+            // Assing maxRange out of the loop to avoid floating precition rounding errors.
+            BinBoundaries[nBins] = maxRange;
         }
 
         public int[] ComputeFrequenciesOf(IEnumerable<double> values)
         {
-            if (values.Min() < binBoundaries[0] || values.Max() > binBoundaries.Last())
+            if (values.Min() < BinBoundaries[0] || values.Max() > BinBoundaries.Last())
             {
                 throw new ArgumentOutOfRangeException();
             }
 
-            int nBins = binBoundaries.Length - 1;
+            int nBins = BinBoundaries.Length - 1;
             int[] frequencies = new int[nBins];
 
             foreach (double value in values)
             {
+                // Loop over the bins apart from the last one to consider the corner case of a value 
+                // equal to BinBoundaries.Last()
                 bool binFound = false;
                 for (int binIndex = 0; binIndex < nBins - 1; binIndex++)
                 {
-                    if (value >= binBoundaries[binIndex] && value < binBoundaries[binIndex + 1])
+                    if (value >= BinBoundaries[binIndex] && value < BinBoundaries[binIndex + 1])
                     {
                         frequencies[binIndex]++;
                         binFound = true;
@@ -46,6 +60,7 @@ namespace Calculator
                 }
                 if (!binFound) frequencies[nBins - 1]++;
             }
+
             return frequencies;
         }
     }

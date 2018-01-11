@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calculator
+namespace Engine
 {
     public enum CalculatorType
     {

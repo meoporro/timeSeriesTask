@@ -27,6 +27,12 @@ namespace Parser
             }
         }
 
+        /// <summary>
+        /// Parse comma separated values in a CSV file.
+        /// Assumption: values on different lines are merged into a single data series.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public double[] ParseDataSeries(string path)
         {
             List<double> dataSeries = new List<double>();

@@ -11,7 +11,7 @@ namespace Test
         public void CSVParserSingleLine()
         {
             var parser = CSVParser.CSVParserInstance;
-            string dataPath = "../../data/testDataSingleLine.csv";
+            string dataPath = "$(ProjectDir)/../../../data/testDataSingleLine.csv";
             double[] parsedDataSeries = parser.ParseDataSeries(dataPath);
             CollectionAssert.AreEqual(parsedDataSeries, Enumerable.Range(0, 6).Select(x => (double)x).ToArray());
         }
@@ -20,7 +20,7 @@ namespace Test
         public void CSVParserTwoLines()
         {
             var parser = CSVParser.CSVParserInstance;
-            string dataPath = "../../data/testDataTwoLines.csv";
+            string dataPath = "$(ProjectDir)/../../../data/testDataTwoLines.csv";
             double[] parsedDataSeries = parser.ParseDataSeries(dataPath);
             CollectionAssert.AreEqual(parsedDataSeries, Enumerable.Range(0, 11).Select(x => (double)x).ToArray());
         }

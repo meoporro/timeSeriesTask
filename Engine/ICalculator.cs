@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Calculator
+namespace Engine
 {
     public interface ICalculator
     {

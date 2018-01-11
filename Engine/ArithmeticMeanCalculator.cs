@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Calculator
+namespace Engine
 {
     public class ArithmeticMeanCalculator : ICalculator
     {
+        // Constructor used only by the factory
         internal ArithmeticMeanCalculator()
         { }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Calculator;
+using Engine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test
@@ -39,6 +39,9 @@ namespace Test
             Assert.AreEqual(constant, arrayMean);
         }
 
+        /// <summary>
+        /// The average of the numbers between 1 and n is (1 + n) / 2.
+        /// </summary>
         [TestMethod]
         public void MeanOfLinearArray()
         {
@@ -48,6 +51,9 @@ namespace Test
             Assert.AreEqual((1 + n) / 2d, arrayMean);
         }
 
+        /// <summary>
+        /// The average of the quares of the numbers between 1 and n is (n + 1) * (2 * n + 1) / 6.
+        /// </summary>
         [TestMethod]
         public void MeanOfSquaresArray()
         {
@@ -76,6 +82,10 @@ namespace Test
             Assert.AreEqual(0, arrayStandardDeviation);
         }
 
+        /// <summary>
+        /// Using the results above, the standard deviation of the numbers between 1 and n 
+        /// is Sqrt((n * (n + 1)) / 12)
+        /// </summary>
         [TestMethod]
         public void StandardDeviationOfLinearValue()
         {
@@ -109,6 +119,16 @@ namespace Test
             CollectionAssert.AreEqual(new int[n].Select(x => 1).ToArray(), frequencies);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void HistogramDataOutOfBinRange()
+        {
+            int n = 5;
+            double[] oddNumbers = Enumerable.Range(1, n + 1).Select(x => (double)x).ToArray();
+            var histogram = new Histogram(0d, n, n);
+            int[] frequencies = histogram.ComputeFrequenciesOf(oddNumbers);
+        }
+        
         private ICalculator workerGetCalculator(CalculatorType calculatorType)
         {
             return CalculatorFactory.GetCalculator(calculatorType);

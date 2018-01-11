@@ -1,4 +1,4 @@
-﻿using Calculator;
+﻿using Engine;
 using Parser;
 using System;
 
@@ -8,7 +8,7 @@ namespace timeSeriesTask
     {
         static void Main(string[] args)
         {
-            string dataPath = "../../../data/SampleData.csv";
+            string dataPath = "$(ProjectDir)/../../../../data/SampleData.csv";
 
             double[] data = CSVParser.CSVParserInstance.ParseDataSeries(dataPath);
 
@@ -31,11 +31,11 @@ namespace timeSeriesTask
             var histogram = new Histogram(minRange, maxRange, nBins);
             int[] frequencies = histogram.ComputeFrequenciesOf(data);
 
-            Console.WriteLine(string.Format("\n" + "The frequencies of a histogram with {0} bins of equal width are:", nBins));
+            Console.WriteLine(string.Format("\n" + "The frequencies of a histogram with {0} equally spaced bins are:", nBins));
             for (int bin = 0; bin < frequencies.Length; bin++)
             {
                 Console.WriteLine(string.Format("[{0}, {1}" + (bin == frequencies.Length - 1 ? "]" : ")") + ": {2}",
-                    histogram.binBoundaries[bin], histogram.binBoundaries[bin + 1], frequencies[bin]));
+                    histogram.BinBoundaries[bin], histogram.BinBoundaries[bin + 1], frequencies[bin]));
             }
 
             Console.WriteLine("\n" + "Thanks. Bye!");

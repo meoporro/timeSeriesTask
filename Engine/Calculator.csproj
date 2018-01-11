@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="CalculatorFactory.cs" />
     <Compile Include="Histogram.cs" />
-    <Compile Include="MeanCalculator.cs" />
+    <Compile Include="ArithmeticMeanCalculator.cs" />
     <Compile Include="ICalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StandardDeviationCalculator.cs" />

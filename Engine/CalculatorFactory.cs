@@ -20,7 +20,7 @@ namespace Calculator
             switch (calculatorType)
             {
                 case CalculatorType.Mean:
-                    return new MeanCalculator();
+                    return new ArithmeticMeanCalculator();
                 case CalculatorType.StandardDeviation:
                     return new StandardDeviationCalculator();
                 default:

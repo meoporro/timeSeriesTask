@@ -12,7 +12,7 @@ namespace Test
         public void CalculatorFactoryMean()
         {
             var calculator = CalculatorFactory.GetCalculator(CalculatorType.Mean);
-            Assert.IsInstanceOfType(calculator, typeof(MeanCalculator));
+            Assert.IsInstanceOfType(calculator, typeof(ArithmeticMeanCalculator));
         }
 
         [TestMethod]

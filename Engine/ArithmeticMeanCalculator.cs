@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
-    public class MeanCalculator : ICalculator
+    public class ArithmeticMeanCalculator : ICalculator
     {
-        internal MeanCalculator()
+        internal ArithmeticMeanCalculator()
         { }
 
         public double Compute(IEnumerable<double> values)
